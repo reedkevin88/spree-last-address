@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "Last Address" do
   stub_authorization!
 
-  let!(:user) { create(:user) }  
+  given!(:user) { create(:user) }  
   given!(:mug) { create(:product, name: "Rails Mug") }
 
   background do

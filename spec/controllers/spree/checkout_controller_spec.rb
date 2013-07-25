@@ -8,7 +8,7 @@ describe Spree::CheckoutController do
   stub_authorization!
 
   let(:token) { 'some_token' }
-  let(:user) { create(:user, :email => "spree_commerce@example.com") }
+  let(:user) { create(:user, email: "spree_commerce@example.com") }
   let(:order) { FactoryGirl.create(:order_with_totals) }
   let(:address_params) do
     address = FactoryGirl.build(:address)
@@ -16,7 +16,7 @@ describe Spree::CheckoutController do
   end
 
   before do
-    stub :try_spree_current_user => user
+    stub try_spree_current_user: user
   end
 
   context "#before_address" do
@@ -35,10 +35,10 @@ describe Spree::CheckoutController do
     it "should return last saved bill_address and ship_address of order" do
       # save the last address when you visit checkout/delivery
       spree_post :update, {
-        :state => "address",
-        :order => {
-          :bill_address_attributes => address_params,
-          :use_billing => true
+        state: "address",
+        order: {
+          bill_address_attributes: address_params,
+          use_billing: true
         }
       }
 
