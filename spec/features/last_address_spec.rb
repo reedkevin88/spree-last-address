@@ -77,13 +77,14 @@ feature "Last Address" do
 
   def add_mug_to_cart
     visit spree.root_path
+    save_and_open_page
     click_link mug.name
     click_button "Add To Cart"
   end
 
   def sign_in_as!(user)
     find("#spree_user_email").set(user.email)
-    fill_in 'Password', :with => 'secret'
+    fill_in 'Password', with: 'secret'
     click_button 'Login'
   end
 end
