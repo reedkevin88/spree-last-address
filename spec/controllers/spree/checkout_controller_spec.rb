@@ -16,11 +16,10 @@ describe Spree::CheckoutController do
   end
 
   before do
-    controller.stub :try_spree_current_user => user
-    controller.stub :current_order => order
+    stub :try_spree_current_user => user
   end
 
-    context "#before_address" do
+  context "#before_address" do
     it "should return nil if order.bill_address is not nil" do
       order.bill_address = create(:address)
       spree_get :edit, state: 'address'
